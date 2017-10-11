@@ -69,7 +69,7 @@
 </template>
 
 <script>
-  import { Spinner } from '../components/spinner'
+  import { Spinner } from 'chva/components/spinner'
   export default {
     name: 'Spinner2',
     data () {

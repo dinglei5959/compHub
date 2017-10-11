@@ -11,7 +11,6 @@ export default {
   name: 'App',
   data () {
     return {
-
     }
   }
 }
@@ -19,5 +18,5 @@ export default {
 
 
 <style lang="less" scoped>
-  @import './app.less'
+  @import './app.less';
 </style>
