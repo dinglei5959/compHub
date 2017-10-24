@@ -3,6 +3,9 @@
      <section class="app-root">
        <slot></slot>
      </section>
+     <aside class="">
+
+     </aside>
   </article>
 </template>
 
@@ -16,7 +19,8 @@ export default {
 }
 </script>
 
-
-<style lang="less" scoped>
-  @import './app.less';
+<style lang="less">
+  @import './app';
+  @import './global';
+  @import '../themes/default.less';
 </style>
