@@ -1,3 +1,4 @@
-import App from './app.vue'
+import App from './vue/app.vue'
+import PageTransition from './vue/pageTransition.vue'
 
-export {App}
+export {App, PageTransition}

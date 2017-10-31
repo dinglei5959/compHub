@@ -1,5 +1,6 @@
 <template>
-  <article v-if="showback" @click="_dismiss()" class="base-backdrop">
+  <article v-if="showback" @dblclick="dblclickHandler" @click="clickHandler"  class="base-backdrop" 
+    :style="{opacity:transparent}">
     
   </article>
 </template>
@@ -9,21 +10,64 @@ export default {
   name: 'Backdrop',
   data () {
     return {
-      showback: this.show
+      showback: this.show,
+      transparent: this.opacity,
+      nowCancelStyle: void (0)
+    }
+  },
+  computed: {
+    type: {
+      get () {
+        switch (this.cancelStyle) {
+          case 'click':
+            return 1
+          case 'dbclick':
+            return 2
+          default:
+            return -1
+        }
+      },
+      set () {}
     }
   },
   props: {
-    show: {
+    show: {  // 展示
       type: Boolean,
       default: false
+    },
+    opacity: {  // 透明度
+      type: Number,
+      default: 0.5
+    },
+    cancelStyle: {  // 'click'  ,'dbclick'
+      type: String,
+      default: 'none'
     }
   },
   methods: {
-    _present () {
+    clickHandler () {
+      if (this.type > 0) {
+        this._dismiss()
+      }
+      if (this.nowCancelStyle === 'click') {  // 设定单击取消
+        this._dismiss()
+      }
+    },
+
+    dblclickHandler () {
+      this._dismiss()
+    },
+
+    _present (options) {
+      if (options && 'cancelStyle' in options) {  // 表示设定了取消方式
+        this.nowCancelStyle = options.cancelStyle
+      }
       this.showback = true
     },
+
     _dismiss () {
       this.showback = false
+      this.nowCancelStyle = void (0)
     }
   }
 }
@@ -34,7 +78,7 @@ export default {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color:rgba(0, 0, 0, .3);
+    background-color:#000;
     z-index: 60;
   }
 </style>

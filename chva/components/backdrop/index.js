@@ -21,8 +21,8 @@ class BackDrop {
     })
   }
 
-  show () {
-    scope.instance._present()
+  show (options) {
+    scope.instance._present(options)
   }
 
   hide () {

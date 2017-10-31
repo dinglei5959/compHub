@@ -20,7 +20,11 @@ export default {
 </script>
 
 <style lang="less">
-  @import './app';
-  @import './global';
-  @import '../themes/default.less';
+  @import '../less/app';
+  @import '../less/global';
+  @import '../../themes/default.less';
+  .app-root{
+    transform-style: preserve-3d;
+    perspective: 50px;
+  }
 </style>

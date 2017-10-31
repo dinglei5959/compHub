@@ -1,6 +1,10 @@
 <template>
   <App>
-    <router-view></router-view>
+    <!--slide  scale rotate  test1-->
+    <PageTransition transitionType="test1">  
+        <router-view></router-view>
+    </PageTransition>
+    
   </App>
 </template>
 
@@ -12,6 +16,7 @@ export default {
 
 <style>
 @import './less/global.less';
+@import './less/components.less';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

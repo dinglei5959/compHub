@@ -7,7 +7,7 @@
 export default {
   name: 'Footer',
   mounted () {
-    console.log(this.$refs.footer.scrollHeight)
+   // console.log(this.$refs.footer.scrollHeight)
     this.$eventbus.$emit('isFooterExist', this.$refs.footer.scrollHeight)
   }
 }

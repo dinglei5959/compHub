@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$refs.header.scrollHeight)
+   // console.log(this.$refs.header.scrollHeight)
     this.$eventbus.$emit('isHeaderExist', this.$refs.header.scrollHeight)
   }
 }
