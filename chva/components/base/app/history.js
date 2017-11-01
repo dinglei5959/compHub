@@ -1,21 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import BackDrop from '../../backdrop'
+let backdrop = new BackDrop()
 let scope
 class History {
-  constructor (routes) {
+  constructor (router) {
+    if (scope) {
+      return scope
+    }
     scope = this
     Vue.prototype.$history = scope
-    scope.routes = routes
-    scope.router = null
+    scope.router = router
     scope.depth = []
     scope.current = -1
     scope.isBack = false
     scope.init()
+    scope.toGlobal()
   }
 
   init () {
-    scope.router = new Router(scope.routes)
     scope.router.beforeEach((to, from, next) => {  // 唯一可以截取所有页面动作的点
+      if (backdrop) {
+        backdrop.hide()
+      }
+
       if (scope.depth.length === 0) {
         scope.depth.push(to)
         scope.current = scope.depth.length - 1
@@ -95,6 +103,15 @@ class History {
    */
   isHeaded () {
     return scope.current === scope.depth.length - 1
+  }
+  /**
+ * 全局化
+ */
+  toGlobal () {
+    if (!window.Global) {
+      window.Global = {}
+    }
+    window.Global.history = scope
   }
 }
 

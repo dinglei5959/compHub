@@ -1,10 +1,12 @@
-import {hasClass, addClass, removeClass, toggleClass} from '../utils'
 import Backdrop from './backdrop.vue'
 import Vue from 'Vue'
 
 let scope
 class BackDrop {
   constructor (options) {
+    if (scope) {
+      return scope
+    }
     scope = this
     scope.instance = null
     scope.propsData = options

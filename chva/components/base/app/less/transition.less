@@ -1,3 +1,5 @@
+
+
 .slide-backward-enter, .slide-forward-leave-active {
   transform: translate(100%, 0);
 }
@@ -42,6 +44,49 @@
 }
 .test1-forward-leave,.test1-backward-leave{
   transition-duration: .1s;
+}
+
+
+
+.bounce-forward-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-forward-leave-active {
+  animation: bounce-out .5s ;
+}
+
+.bounce-backward-enter-active{
+  animation: bounce-out .5s reverse;
+}
+.bounce-backward-leave-active {
+  animation: bounce-in .5s reverse;
+}
+
+
+@side:400px;
+@uper:-40px;
+@keyframes bounce-out {
+  0% {
+     transform: translateZ(0px) translateX(0px);
+  }
+  50% {
+    transform: translateZ(@uper/2) translateX(@side);
+  }
+  100% {
+    transform: translateZ(@uper) translateX(0px);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateZ(@uper) translateX(0px);
+  }
+  50% {
+    transform: translateZ(@uper/2) translateX(-@side);
+  }
+  100% {
+    transform: translateZ(0px) translateX(0px);
+  }
 }
 
 

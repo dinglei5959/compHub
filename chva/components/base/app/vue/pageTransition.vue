@@ -33,7 +33,9 @@
 
 <style lang="less" scoped>
   @import '../less/transition.less';
+  @animationFunction:linear;
     .page {
       transition: all .5s cubic-bezier(.55, 0, .1, 1);
+      animation-timing-function: @animationFunction;
     }
 </style>

@@ -1,7 +1,10 @@
 
 import Index from '@/pages/index.vue'
+import Router from 'vue-router'
+import Vue from 'vue'
+Vue.use(Router)
 
-export default {
+let routes = {
   routes: [
     {
       path: '/',
@@ -24,3 +27,5 @@ export default {
     }
   ]
 }
+
+export default new Router(routes)
