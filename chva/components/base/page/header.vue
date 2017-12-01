@@ -19,7 +19,7 @@ export default {
   },
   mounted () {
    // console.log(this.$refs.header.scrollHeight)
-    this.$eventbus.$emit('isHeaderExist', this.$refs.header.scrollHeight)
+    this.$eventbus.$emit('isHeaderExist', this.$refs.header.scrollHeight) // 为了计算content应该下降的高度
   }
 }
 </script>

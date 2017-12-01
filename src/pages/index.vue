@@ -13,6 +13,9 @@
         <section class="item">
           <router-link :to="{name:'backdrop'}">backdrop</router-link>
         </section>
+        <section class="item">
+          <router-link :to="{name:'loading'}">loading</router-link>
+        </section>
       </article>
     </Content>
     <Footer class="flexMiddle">

@@ -1,3 +1,23 @@
 .bold{
   font-weight: bold;
 }
+
+.flex{
+  display: flex;
+}
+
+.flex-middle{
+  &:extend(.flex);
+  align-items: center;
+}
+
+.flex-center{
+   &:extend(.flex);
+   justify-content: center;
+}
+
+.flex-middle-center{
+  &:extend(.flex);
+  align-items: center;
+  justify-content: center;
+}

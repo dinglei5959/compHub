@@ -1,5 +1,5 @@
 <template>
-  <article class="base-toobar">
+  <article class="base-toolbar">
     <slot></slot>
   </article>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .base-toobar{
+  .base-toolbar{
     width: 100%;
   }
 </style>

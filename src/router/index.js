@@ -19,6 +19,13 @@ let routes = {
       }
     },
     {
+      path: '/loading',
+      name: 'loading',
+      component (resolve) {
+        require(['@/pages/loading.vue'], resolve)
+      }
+    },
+    {
       path: '/backdrop',
       name: 'backdrop',
       component (resolve) {

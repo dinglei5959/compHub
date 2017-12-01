@@ -1,12 +1,15 @@
 <template>
-  <article class="base-title">
-    <slot></slot>
+  <article ref="title" class="base-title">
+    <slot ></slot>
   </article>
 </template>
 
 <script>
 export default {
-  name: 'NavBarTitle'
+  name: 'NavBarTitle',
+  mounted () {
+    document.title = this.$refs.title.innerHTML
+  }
 }
 </script>
 

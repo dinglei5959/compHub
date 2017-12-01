@@ -21,10 +21,14 @@
     },
     watch: {
       '$route' (to, from) {
-        if (this.$history.isBack) {
-          this.transitionName = 'backward'
+        if (from.name) {
+          if (this.$history.isBack) {
+            this.transitionName = 'backward'
+          } else {
+            this.transitionName = 'forward'
+          }
         } else {
-          this.transitionName = 'forward'
+          this.transitionName = 'none'
         }
       }
     }

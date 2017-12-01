@@ -3,9 +3,7 @@
      <section class="app-root">
        <slot></slot>
      </section>
-     <aside class="">
-
-     </aside>
+     <aside id="loadingPortal"></aside>
   </article>
 </template>
 

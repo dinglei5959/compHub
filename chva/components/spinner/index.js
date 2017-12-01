@@ -1,3 +1,3 @@
-import Spinner from './spinner.vue'
+import Spinner from './vue/spinner.vue'
 
 export {Spinner}
