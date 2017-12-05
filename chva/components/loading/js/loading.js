@@ -1,7 +1,8 @@
-import loading from '../vue/loading.vue'
 import Vue from 'vue'
+import loading from '../vue/loading.vue'
 let scope
-class Loading {
+
+export class Loading {
   constructor (options) {
     scope = this
     scope.template
@@ -41,5 +42,3 @@ class Loading {
     scope.el.innerHTML = ''
   }
 }
-
-export default Loading
