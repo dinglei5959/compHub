@@ -33,10 +33,10 @@ export default {
     },
     methods: {
       dismiss () {
-        return new Promise((reslove, reject) => {
+        return new Promise((resolve, reject) => {
           this.show = false
           this.$nextTick(() => {
-            reslove()
+            resolve()
           })
         })
       },
