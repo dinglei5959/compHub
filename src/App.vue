@@ -1,10 +1,9 @@
 <template>
   <App>
     <!--slide  scale rotate  test1 bounce-->
-    <PageTransition transitionType="bounce">  
+    <PageTransition transitionType="slide">  
         <router-view></router-view>
     </PageTransition>
-    
   </App>
 </template>
 

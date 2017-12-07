@@ -26,6 +26,13 @@ let routes = {
       }
     },
     {
+      path: '/alert',
+      name: 'alert',
+      component (resolve) {
+        require(['@/pages/alert.vue'], resolve)
+      }
+    },
+    {
       path: '/backdrop',
       name: 'backdrop',
       component (resolve) {

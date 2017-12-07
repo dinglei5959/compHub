@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import BackDrop from '../../backdrop'
+import loading from '../../loading'
 let backdrop = new BackDrop()
 let scope
 class History {
@@ -20,8 +21,11 @@ class History {
 
   init () {
     scope.router.beforeEach((to, from, next) => {  // 唯一可以截取所有页面动作的点
-      if (backdrop) {
+      if (backdrop.hide) {
         backdrop.hide()
+      }
+      if (loading && loading.dismiss) {
+        loading.dismiss()
       }
 
       if (scope.depth.length === 0) {

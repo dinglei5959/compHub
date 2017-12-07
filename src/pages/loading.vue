@@ -8,7 +8,10 @@
     <Content>
       <article padding>
         <section @click="clickHandler" class="item">
-          <span>点击</span>
+          <span>点击不会关闭</span>
+        </section>
+        <section @click="timeout" class="item">
+          <span>点击超时3s关闭</span>
         </section>
       </article>
     </Content>
@@ -22,9 +25,9 @@ export default {
     methods: {
       clickHandler () {
         Loading.present({message: '请稍候..'})
-        setTimeout(() => {
-          Loading.dismiss()
-        }, 2000)
+      },
+      timeout () {
+        Loading.present({message: 'close after 3s..', timeout: 3000})
       }
     },
     created () {}
@@ -32,5 +35,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+  .item{
+    padding: 10px 30px;
+  }
 </style>

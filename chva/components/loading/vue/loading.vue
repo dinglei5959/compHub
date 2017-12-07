@@ -34,6 +34,16 @@ export default {
         default: 'loading..'
       }
     },
+    methods: {
+      dismiss () {
+        return new Promise((reslove, reject) => {
+          this.show = false
+          this.$nextTick(() => {
+            reslove()
+          })
+        })
+      }
+    },
     mounted () {
       this.show = true
     },
@@ -62,7 +72,7 @@ export default {
       font-size: 14px;
       font-weight: bold;
       &:extend(.center);
-      max-width: 60%;
+      max-width: 80%;
       transition: transform 0.2s ease;
       .loading-message {
         margin-left: 10px;

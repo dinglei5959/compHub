@@ -1,44 +1,26 @@
-import Vue from 'vue'
-import loading from '../vue/loading.vue'
-let scope
+import loadingTemp from '../vue/loading.vue'
+import PopUp from '../../utils/popup.js'
 
-export class Loading {
+class Loading extends PopUp {
   constructor (options) {
-    scope = this
-    scope.template
-    scope.el
-    scope.init()
-  }
-  init () {
-    scope.template = Vue.extend(loading)
-  }
-  present (options) {
-    if (options && options.el) {
-      scope.el = options.el
-    } else {
-      if (!scope.el) {
-        if (document.getElementById('loadingPortal')) {
-          scope.el = document.getElementById('loadingPortal')
-        } else {
-          let el = document.createElement('aside')
-          el.id = 'loadingPortal'
-          document.body.appendChild(el)
-          scope.el = el
+    super({
+      container: 'loadingPortal',  // container
+      template: loadingTemp,  // 模板
+      propsData: [     // 参数类型
+        {
+          name: 'message',
+          default: 'loading..'
         }
-      }
-    }
-
-    let container = document.createElement('section')
-    scope.el.appendChild(container)
-
-    new scope.template({
-      el: container,
-      propsData: {
-        message: options && options.message ? options.message : 'loading..'
+      ],
+      postpresent: (options) => {
+        if (options && options.timeout) {
+          setTimeout(() => {
+            this.dismiss()
+          }, options.timeout)
+        }
       }
     })
   }
-  dismiss () {
-    scope.el.innerHTML = ''
-  }
 }
+
+export default Loading

@@ -16,6 +16,9 @@
         <section class="item">
           <router-link :to="{name:'loading'}">loading</router-link>
         </section>
+        <section class="item">
+          <router-link :to="{name:'alert'}">alert</router-link>
+        </section>
       </article>
     </Content>
     <Footer class="flexMiddle">

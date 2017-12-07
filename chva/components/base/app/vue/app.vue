@@ -4,6 +4,7 @@
        <slot></slot>
      </section>
      <aside id="loadingPortal"></aside>
+     <aside id="alertPortal"></aside>
   </article>
 </template>
 
