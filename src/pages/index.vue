@@ -5,10 +5,17 @@
         <NavBarTitle>首页</NavBarTitle>
       </NavBar>
     </Header>
-    <Content padding>
+    <Content style="background:#7f89b545;">
       <article class="list">
-        <section v-for="(item,index) in list" :key="'list'+index" class="item">
-          <router-link :to="{name:item}">{{item}}</router-link>
+        <section v-for="(item,index) in list" :key="'list'+index" class="category-item">
+          <section class="introduce">
+            {{item.name}}
+          </section>
+          <section class="_content">
+            <section v-for="(page,pi) in item.item" :key="item.name+pi" class="content-item">
+              <router-link :to="{name:page.intro}">{{page.name}}</router-link>
+            </section>
+          </section>
         </section>
       </article>
     </Content>
@@ -32,26 +39,37 @@ export default {
       list: pages
     }
   },
-  created () {
-  }
+  created () {}
 }
 </script>
 
 <style lang="less" scoped>
-@import '../less/global.less';
-  .list{
-    .item{
-      padding: 10px;
-      border-bottom:1px solid rgba(100, 100, 100,.5);
-      &>a{
-        text-decoration: none;
-        color: @black;
+  @import "../less/global.less";
+
+  @border: 1px solid rgba(100, 100, 100, 0.5);
+  .list {
+    .category-item {
+      ._content {
+        border: @border;
+        padding: 0 20px;
+        background: #fff;
+        .content-item {
+          padding: 10px;
+          &:not(:last-child) {
+            border-bottom: @border;
+          }
+          & > a {
+            text-decoration: none;
+            color: @black;
+          }
+        }
+      }
+      .introduce {
+        font-size: 12px;
+        padding: 10px;
       }
     }
   }
-
-
-
 
   .details {
     padding: 5px;
@@ -63,7 +81,7 @@ export default {
       height: 30px;
       background-size: contain;
     }
-    &>div{
+    & > div {
       padding: 0;
     }
   }

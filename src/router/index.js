@@ -16,14 +16,16 @@ let routes = {
 }
 
 routeArr.forEach((e, i) => {
-  let route = {
-    path: '/' + e,
-    name: e,
-    component (resolve) {
-      require(['@/pages/demo/' + e + '.vue'], resolve)
+  e.item.forEach((e, i) => {
+    let route = {
+      path: '/' + e.intro,
+      name: e.intro,
+      component (resolve) {
+        require(['@/pages/demo/' + e.intro + '.vue'], resolve)
+      }
     }
-  }
-  routes.routes.push(route)
+    routes.routes.push(route)
+  })
 })
 
 export default new Router(routes)
