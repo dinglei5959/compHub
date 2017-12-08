@@ -35,7 +35,7 @@
       },
       size: {
         type: Number,
-        default: 30
+        default: 25
       },
       type: {
         type: String,
@@ -157,13 +157,26 @@
     }
   }
 
+  @keyframes scaleAndFlash2{
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(0.1);
+      opacity: 0.1;
+    }
+  }
+
   @keyframes scale {
     0% {
-      r: 7%;
+     // r: 7%;
+     transform: scale(1);
       opacity: 1;
     }
     100% {
-      r: 0%;
+     // r: 0%;
+      transform: scale(0.2);
       opacity: 1;
     }
   }

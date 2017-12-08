@@ -33,8 +33,8 @@
         </section>
         <section  class="item">
            <Button shape="lub" style="padding:10px 20px;">
-             <span style="padding-right:10px;">loading</span>
-             <Spinner :size="20"></Spinner>
+             <span style="padding-right:5px;">loading</span>
+             <Spinner :size="20" color="#fff"></Spinner>
            </Button>
         </section>
       </article>
