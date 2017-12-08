@@ -1,5 +1,5 @@
 <template>
-  <App>
+  <App id="app">
     <!--slide  scale rotate  test1 bounce-->
     <PageTransition transitionType="slide">  
         <router-view></router-view>
@@ -20,8 +20,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background:#7f89b545;
 }
 </style>
