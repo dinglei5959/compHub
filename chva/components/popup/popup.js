@@ -77,11 +77,7 @@ class PopUp {
    * 关闭
    */
   dismiss () {
-    this.instance && this.instance.dismiss().then(() => {
-      if (this.el) {
-        this.el.innerHTML = ''
-      }
-    })
+    this.instance && this.instance.dismiss()
   }
 }
 

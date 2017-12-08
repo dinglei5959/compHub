@@ -76,8 +76,10 @@ export default {
 <style scoped>
   .base-backdrop{
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color:#000;
     z-index: 60;
   }

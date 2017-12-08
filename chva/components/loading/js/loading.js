@@ -1,5 +1,5 @@
 import loadingTemp from '../vue/loading.vue'
-import PopUp from '../../utils/popup.js'
+import PopUp from '../../popup/popup.js'
 
 class Loading extends PopUp {
   constructor (options) {

@@ -4,7 +4,7 @@
       <BackDrop v-show="show" :show="true"></BackDrop>
     </transition>
     <article class="loading-root">
-      <transition name="pop">
+      <transition name="scale">
         <section v-show="show" class="loading">
           <Spinner :size="spinnerSize"></Spinner>
           <span class="loading-message">{{message}}</span>
@@ -15,63 +15,61 @@
 </template>
 
 <script>
-  import BackDrop from '../../backdrop/backdrop.vue'
+import BackDrop from '../../backdrop/backdrop.vue'
 import Spinner from '../../spinner/vue/spinner.vue'
 export default {
-    name: 'Loading',
-    data () {
-      return {
-        show: false
-      }
+  name: 'Loading',
+  data () {
+    return {
+      show: false
+    }
+  },
+  props: {
+    spinnerSize: {
+      type: Number,
+      default: 25
     },
-    props: {
-      spinnerSize: {
-        type: Number,
-        default: 25
-      },
-      message: {
-        type: String,
-        default: 'loading..'
-      }
-    },
-    methods: {
-      dismiss () {
-        return new Promise((reslove, reject) => {
-          this.show = false
-          this.$nextTick(() => {
-            reslove()
-          })
+    message: {
+      type: String,
+      default: 'loading..'
+    }
+  },
+  methods: {
+    dismiss () {
+      return new Promise((reslove, reject) => {
+        this.show = false
+        this.$nextTick(() => {
+          reslove()
         })
-      }
-    },
-    mounted () {
-      this.show = true
-    },
-    components: { BackDrop, Spinner }
-  }
+      })
+    }
+  },
+  mounted () {
+    this.show = true
+  },
+  components: { BackDrop, Spinner }
+}
 </script>
 
 <style lang="less" scoped>
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+@import "../../popup/popupTransition.less";
+@import "../../base/themes/block.less";
+@import "../../base/themes/z-index.less";
 
   .loading-root {
-    &:extend(.center);
+    &:extend(.flex-middle);
     .loading {
       width: auto;
       padding: 25px 40px;
       background: aliceblue;
-      z-index: 61;
+      z-index: @popupIndex;
       position: absolute;
       top: 40%;
       border: 0;
       border-radius: 5px;
       font-size: 14px;
       font-weight: bold;
-      &:extend(.center);
+      &:extend(.flex-middle);
       max-width: 80%;
       transition: transform 0.2s ease;
       .loading-message {
@@ -80,16 +78,5 @@ export default {
     }
   }
 
-  .pop-enter {
-    transform: scale(1.1);
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.5s;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
+  
 </style>

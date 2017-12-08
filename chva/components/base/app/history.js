@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import BackDrop from '../../backdrop'
 import loading from '../../loading'
+import alert from '../../alert'
 let backdrop = new BackDrop()
 let scope
 class History {
@@ -24,6 +25,10 @@ class History {
       if (backdrop.hide) {
         backdrop.hide()
       }
+      if (alert && alert.dismiss) {
+        alert.dismiss()
+      }
+
       if (loading && loading.dismiss) {
         loading.dismiss()
       }

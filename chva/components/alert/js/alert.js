@@ -1,5 +1,5 @@
 import alertTemp from '../vue/alert.vue'
-import PopUp from '../../utils/popup.js'
+import PopUp from '../../popup/popup.js'
 
 class Alert extends PopUp {
   constructor (options) {
