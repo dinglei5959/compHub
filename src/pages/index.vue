@@ -7,17 +7,8 @@
     </Header>
     <Content padding>
       <article class="list">
-        <section class="item">
-          <router-link :to="{name:'spinner'}">spinner</router-link>
-        </section>
-        <section class="item">
-          <router-link :to="{name:'backdrop'}">backdrop</router-link>
-        </section>
-        <section class="item">
-          <router-link :to="{name:'loading'}">loading</router-link>
-        </section>
-        <section class="item">
-          <router-link :to="{name:'alert'}">alert</router-link>
+        <section v-for="(item,index) in list" :key="'list'+index" class="item">
+          <router-link :to="{name:item}">{{item}}</router-link>
         </section>
       </article>
     </Content>
@@ -33,8 +24,14 @@
   </Page>
 </template>
 <script>
+import pages from './pages.js'
 export default {
   name: 'Index',
+  data () {
+    return {
+      list: pages
+    }
+  },
   created () {
   }
 }

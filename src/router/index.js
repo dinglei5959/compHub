@@ -2,6 +2,7 @@
 import Index from '@/pages/index.vue'
 import Router from 'vue-router'
 import Vue from 'vue'
+import routeArr from '@/pages/pages.js'
 Vue.use(Router)
 
 let routes = {
@@ -10,36 +11,19 @@ let routes = {
       path: '/',
       name: 'index',
       component: Index
-    },
-    {
-      path: '/spinner',
-      name: 'spinner',
-      component (resolve) {
-        require(['@/pages/spinner.vue'], resolve)
-      }
-    },
-    {
-      path: '/loading',
-      name: 'loading',
-      component (resolve) {
-        require(['@/pages/loading.vue'], resolve)
-      }
-    },
-    {
-      path: '/alert',
-      name: 'alert',
-      component (resolve) {
-        require(['@/pages/alert.vue'], resolve)
-      }
-    },
-    {
-      path: '/backdrop',
-      name: 'backdrop',
-      component (resolve) {
-        require(['@/pages/backdrop.vue'], resolve)
-      }
     }
   ]
 }
+
+routeArr.forEach((e, i) => {
+  let route = {
+    path: '/' + e,
+    name: e,
+    component (resolve) {
+      require(['@/pages/demo/' + e + '.vue'], resolve)
+    }
+  }
+  routes.routes.push(route)
+})
 
 export default new Router(routes)
