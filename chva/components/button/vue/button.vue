@@ -1,5 +1,5 @@
 <template>
-  <article :style="{backgroundColor:bgcolor,borderRadius:bdradius}" class="button-root">
+  <article @click="$emit('click')" :style="{backgroundColor:bgcolor,borderRadius:bdradius}" class="button-root">
     <span class="slot">
       <slot></slot>
     </span>

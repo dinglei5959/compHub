@@ -12,8 +12,9 @@
             {{item.name}}
           </section>
           <section class="_content">
-            <section v-for="(page,pi) in item.item" :key="item.name+pi" class="content-item">
-              <router-link :to="{name:page.intro}">{{page.name}}</router-link>
+            <section v-for="(page,pi) in item.item" @click="toDemoPage(page.intro)" :key="item.name+pi" class="content-item">
+              <span>{{page.name}}</span>
+              <span style="float:right;">{{page.intro}}<i class="goIcon"></i></span>
             </section>
           </section>
         </section>
@@ -39,6 +40,13 @@ export default {
       list: pages
     }
   },
+  methods: {
+    toDemoPage (name) {
+      this.$router.push({
+        name: name
+      })
+    }
+  },
   created () {}
 }
 </script>
@@ -55,6 +63,16 @@ export default {
         background: #fff;
         .content-item {
           padding: 10px;
+          .goIcon{
+            margin-left: 10px;
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            border: @border;
+            border-bottom: 0;
+            border-left:0;
+            transform:rotateZ(45deg);
+          }
           &:not(:last-child) {
             border-bottom: @border;
           }

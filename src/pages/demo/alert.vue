@@ -7,12 +7,12 @@
     </Header>
     <Content>
       <article padding>
-        <section @click="clickHandler" class="item">
+        <Button shape='lub' @click="clickHandler" class="item">
            无标题Alert
-        </section>
-        <section @click="clickHandler2" class="item">
+        </Button>
+        <Button shape='lub' @click="clickHandler2" class="item">
            有标题Alert
-        </section>
+        </Button>
       </article>
     </Content>
   </Page>
@@ -20,6 +20,7 @@
 
 <script>
   import Alert from 'chva/components/alert'
+  import Button from 'chva/components/button'
   export default{
     name: 'Alert',
     methods: {
@@ -62,6 +63,7 @@
           ]
         })
       }
-    }
+    },
+    components: {Button}
   }
 </script>
