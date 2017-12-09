@@ -1,7 +1,7 @@
 <template>
   <article class="base-navbar">
     <section  class="navbar_left">
-      <div v-if="showback" @click="$history.router.go(-1)" >
+      <div v-if="showback" @click="$history.router.back()" >
         <i class="backIcon"></i>
         返回
       </div>
@@ -24,6 +24,7 @@ export default {
     }
   },
   created () {
+    console.log(this.$history)
     if (this.$history.depth.length > 1) {
       this.showback = true
     }

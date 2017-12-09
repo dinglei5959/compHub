@@ -55,7 +55,9 @@ export default {
     },
 
     dblclickHandler () {
-      this._dismiss()
+      if (this.type === 2) {
+        this._dismiss()
+      }
     },
 
     _present (options) {

@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Chva from 'chva'
+import AttachFastClick from 'fastclick'
 
 Vue.use(Chva, {router})
 
 Vue.config.productionTip = false
+new AttachFastClick(document.body)
 
 Vue.mixin({
   created: function () {
