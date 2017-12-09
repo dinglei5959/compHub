@@ -57,13 +57,24 @@ class PopUp {
 
     let propsData = {}
 
-    this.propsData.forEach((e, i) => {
-      if (options && (e.name in options)) {
-        propsData[e.name] = options[e.name]
+    // console.log(this.template)
+    // debugger
+
+    Object.keys(this.template.props).forEach((e, i) => {
+      if (options && (e in options)) {
+        propsData[e] = options[e]
       } else {
-        propsData[e.name] = e.default
+        propsData[e] = this.template.props[e].default
       }
     })
+
+    // this.propsData.forEach((e, i) => {
+    //   if (options && (e.name in options)) {
+    //     propsData[e.name] = options[e.name]
+    //   } else {
+    //     propsData[e.name] = e.default
+    //   }
+    // })
 
     let container = document.createElement('section')
     this.el.appendChild(container)

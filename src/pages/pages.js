@@ -11,7 +11,8 @@ export default [
     item: [
       {name: '遮罩', intro: 'backdrop'},
       {name: '弹出框', intro: 'alert'},
-      {name: '加载框', intro: 'loading'}
+      {name: '加载框', intro: 'loading'},
+      {name: '指示器', intro: 'indicator'}
     ]
   }
 ]
