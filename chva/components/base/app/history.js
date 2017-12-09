@@ -32,8 +32,7 @@ class History {
       if (loading && loading.dismiss) {
         loading.dismiss()
       }
-
-      if (scope.depth.length === 0) {
+      if (scope.depth.length === 0) { // 初次进入
         scope.depth.push(to)
         scope.current = scope.depth.length - 1
       } else {
@@ -56,9 +55,9 @@ class History {
       /** 自定义区域 */
       let args = Array.from(arguments)
       let to = scope.router.resolve(args[0]).resolved
-      if (scope.isHeaded()) {
+      if (scope.isHeaded()) { // 非最前端的操作不太一样
         scope.depth.splice(scope.depth.length - 1, 1, to)
-      } else {
+      } else {  // 处于中间的操作
         scope.depth.splice(scope.current, scope.depth.length - scope.current, to)
       }
       scope.current = scope.depth.length - 1
@@ -66,22 +65,22 @@ class History {
       copyReplace.apply(null, arguments)
     }
 
-     // go重构
-    let copyGo = scope.router.go
-    copyGo = copyGo.bind(scope.router)
-    scope.router.go = function () {
-      /** 自定义区域 */
-      let args = Array.from(arguments)
-      let n = args[0]
-      if ((n > 0 && scope.current + n < scope.depth.length) || (n < 0 && scope.current + n >= 0)) {  // 没有溢出
-        scope.current += n
-      } else {  // 溢出
-        console.error('out of history')
-      }
-      // scope.depth.slice(scope.depth.length - 1, 1, to)
-      /** 自定义区域 */
-      copyGo.apply(null, arguments)
-    }
+    //  // go重构
+    // let copyGo = scope.router.go
+    // copyGo = copyGo.bind(scope.router)
+    // scope.router.go = function () {
+    //   /** 自定义区域 */
+    //   let args = Array.from(arguments)
+    //   let n = args[0]
+    //   if ((n > 0 && scope.current + n < scope.depth.length) || (n < 0 && scope.current + n >= 0)) {  // 没有溢出
+    //     scope.current += n
+    //   } else {  // 溢出
+    //     console.error('out of history')
+    //   }
+    //   // scope.depth.slice(scope.depth.length - 1, 1, to)
+    //   /** 自定义区域 */
+    //   copyGo.apply(null, arguments)
+    // }
   }
 
   pushHistory (to) {
