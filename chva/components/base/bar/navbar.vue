@@ -24,7 +24,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$history)
+    console.log(this.$history.current, this.$history.depth)
     if (this.$history.depth.length > 1) {
       this.showback = true
     }

@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from 'store2'
 import BackDrop from '../../backdrop'
 import loading from '../../loading'
 import alert from '../../alert'
+
 let backdrop = new BackDrop()
 let scope
 class History {
@@ -11,7 +13,6 @@ class History {
       return scope
     }
     scope = this
-    Vue.prototype.$history = scope
     scope.router = router
     scope.depth = []
     scope.current = -1
@@ -21,6 +22,19 @@ class History {
   }
 
   init () {
+    if (store.session('historylog')) { // 取之
+      let historylog = store.session('historylog')
+      this.depth = historylog.depth
+      this.current = historylog.current
+      this.isBack = historylog.isBack
+    }
+    window.onbeforeunload = () => {
+      store.session('historylog', {
+        depth: JSON.parse(JSON.stringify(this.depth)),
+        current: this.current,
+        isBack: this.isBack
+      })
+    }
     scope.router.beforeEach((to, from, next) => {  // 唯一可以截取所有页面动作的点
       if (backdrop.hide) {
         backdrop.hide()
@@ -32,15 +46,17 @@ class History {
       if (loading && loading.dismiss) {
         loading.dismiss()
       }
+
       if (scope.depth.length === 0) { // 初次进入
-        scope.depth.push(to)
-        scope.current = scope.depth.length - 1
+        scope.pushHistory(to)
       } else {
         if (scope.indexOfRecord(to) > -1 && scope.current > scope.indexOfRecord(to)) { // 已经有此记录 且currnt在to的前面
           scope.isBack = true
+         // console.log(scope.indexOfRecord(to), scope.current, '后退')
           scope.popHistory(to)
         } else {   // 没有记录则一定是forward ， 或者有记录但是current 在to后面
           scope.isBack = false
+        //  console.log(scope.indexOfRecord(to), scope.current, '前进')
           scope.pushHistory(to)
         }
       }
@@ -56,9 +72,15 @@ class History {
       let args = Array.from(arguments)
       let to = scope.router.resolve(args[0]).resolved
       if (scope.isHeaded()) { // 非最前端的操作不太一样
-        scope.depth.splice(scope.depth.length - 1, 1, to)
+        scope.depth.splice(scope.depth.length - 1, 1, {
+          name: to.name,
+          path: to.path
+        })
       } else {  // 处于中间的操作
-        scope.depth.splice(scope.current, scope.depth.length - scope.current, to)
+        scope.depth.splice(scope.current, scope.depth.length - scope.current, {
+          name: to.name,
+          path: to.path
+        })
       }
       scope.current = scope.depth.length - 1
       /** 自定义区域 */
@@ -85,9 +107,15 @@ class History {
 
   pushHistory (to) {
     if (scope.isHeaded()) {
-      scope.depth.push(to)
-    } else {
-      scope.depth.splice(scope.current + 1, scope.depth.length - scope.current - 1, to)
+      scope.depth.push({
+        name: to.name,
+        path: to.path
+      })
+    } else {  // 当current处于非末端  则直接干掉后面所有的history
+      scope.depth.splice(scope.current + 1, scope.depth.length - scope.current - 1, {
+        name: to.name,
+        path: to.path
+      })
     }
     scope.current = scope.depth.length - 1
   }
