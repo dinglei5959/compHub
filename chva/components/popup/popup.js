@@ -102,7 +102,7 @@ class PopUp {
    */
   dismiss () {
     this.instance && this.instance.dismiss()
-    this.status = false
+    this.status = false  // 改变状态
   }
 }
 

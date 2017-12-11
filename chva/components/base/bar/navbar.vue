@@ -26,6 +26,8 @@ export default {
   },
   methods: {
     clickHandler () {
+      console.log(Modal)
+      debugger
       if (Modal.status) { // 判断Modal的开关状态
         Modal.dismiss()
       } else {
