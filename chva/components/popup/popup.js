@@ -25,6 +25,8 @@ class PopUp {
     this.el = void (0)
     // vue实例
     this.instance = void (0)
+    // 默认状态为关闭
+    this.status = false
     // 初始化
     this.init()
   }
@@ -57,10 +59,7 @@ class PopUp {
 
     let propsData = {}
 
-    // console.log(this.template)
-    // debugger
-
-    Object.keys(this.template.props).forEach((e, i) => {
+    this.template && this.template.props && Object.keys(this.template.props).forEach((e, i) => {
       if (options && (e in options)) {
         propsData[e] = options[e]
       } else {
@@ -78,17 +77,32 @@ class PopUp {
 
     let container = document.createElement('section')
     this.el.appendChild(container)
-    this.instance = new this.templateFunc({
+    let params = { // 传递的参数
       el: container,
-      propsData: propsData
-    })
+      propsData: propsData,
+      components: {}
+    }
+    if ('template__name' in this.template.data()) {  // 模板的属性暂时约定为template__name
+      if (options.template.props) {
+        options.template.props.data = {type: Object}
+      } else {
+        options.template.props = {
+          data: { type: Object }
+        }
+      }
+
+      params.components[this.template.data().template__name] = options.template  // components
+    }
+    this.instance = new this.templateFunc(params)
     this.postpresent && this.postpresent(options)
+    this.status = true  // 改变状态参数
   }
   /**
    * 关闭
    */
   dismiss () {
     this.instance && this.instance.dismiss()
+    this.status = false
   }
 }
 

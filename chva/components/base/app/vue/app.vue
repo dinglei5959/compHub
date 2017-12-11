@@ -5,6 +5,7 @@
      </section>
      <aside id="loadingPortal"></aside>
      <aside id="alertPortal"></aside>
+     <aside id="modalPortal"></aside>
   </article>
 </template>
 
@@ -12,8 +13,7 @@
 export default {
   name: 'App',
   data () {
-    return {
-    }
+    return {}
   }
 }
 </script>

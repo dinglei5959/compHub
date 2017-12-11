@@ -1,7 +1,7 @@
 <template>
   <article class="base-navbar">
     <section  class="navbar_left">
-      <div v-if="showback" @click="$history.router.back()" >
+      <div v-if="showback" @click="clickHandler" >
         <i class="backIcon"></i>
         返回
       </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import Modal from '../../modal'
 export default {
   name: 'NavBar',
   data () {
@@ -23,8 +24,17 @@ export default {
       showback: false
     }
   },
+  methods: {
+    clickHandler () {
+      if (Modal.status) { // 判断Modal的开关状态
+        Modal.dismiss()
+      } else {
+        this.$history.router.back()
+      }
+    }
+  },
   created () {
-    console.log(this.$history.current, this.$history.depth)
+   // console.log(this.$history.current, this.$history.depth)
     if (this.$history.depth.length > 1) {
       this.showback = true
     }

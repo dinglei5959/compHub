@@ -56,6 +56,7 @@ export default {
     this.$nextTick(() => {
       this.panelShow = true
     })
+    debugger
   },
   components: { BackDrop }
 }

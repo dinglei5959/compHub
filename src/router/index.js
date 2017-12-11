@@ -21,7 +21,7 @@ routeArr.forEach((e, i) => {
       path: '/' + e.intro,
       name: e.intro,
       component (resolve) {
-        require(['@/pages/demo/' + e.intro + '.vue'], resolve)
+        require(['@/pages/demo/' + (e.cata ? e.cata : '') + e.intro + '.vue'], resolve)
       }
     }
     routes.routes.push(route)
