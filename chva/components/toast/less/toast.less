@@ -1,0 +1,32 @@
+@height:20px;
+@shift:10px;
+
+.bottom{
+  bottom: 0px;
+  transform: translateY(-@shift);
+}
+
+.top{
+  top:0px;
+  transform: translateY(@shift);
+}
+
+.left_in_top,.right_in_top{
+  top:0px;
+  transform: translate(0%,@shift);
+}
+
+.left_in_middle,.right_in_middle{
+  top:50%;
+  transform: translate(0%,-50%);
+}
+
+.left_in_bottom,.right_in_bottom{
+  bottom:0px;
+  transform: translate(0%,-@shift);
+}
+
+.fade{
+  top:50%;
+  transform: translate(0%,-50%);
+}

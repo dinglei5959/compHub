@@ -18,3 +18,66 @@
 .fade-leave-to{
   opacity: 1;
 }
+
+/*这里是针对toast的动画--start*/
+//之所以会加上！important  是因为
+
+.from-fade-grow-enter,.from-fade-grow-leave-to{
+    opacity: 0;
+}
+
+.from-bottom-grow-enter,.from-bottom-grow-leave-to{
+    transform: translateY(100%)!important;
+}
+
+.from-top-grow-enter,.from-top-grow-leave-to{
+    transform: translateY(-100%)!important;
+}
+
+.from-left_in_top-grow-enter{
+   transform: translate(-100%,10px)!important;
+}
+.from-left_in_top-grow-leave-to{
+   transform: translate(100%,10px)!important;
+}
+
+.from-left_in_middle-grow-enter{
+   transform: translate(-100%,-50%)!important;
+}
+.from-left_in_middle-grow-leave-to{
+   transform: translate(100%,-50%)!important;
+}
+
+.from-left_in_bottom-grow-enter{
+   transform: translate(-100%,-10px)!important;
+}
+.from-left_in_bottom-grow-leave-to{
+   transform: translate(100%,-10px)!important;
+}
+
+.from-right_in_top-grow-enter{
+   transform: translate(100%,10px)!important;
+}
+.from-right_in_top-grow-leave-to{
+   transform: translate(-100%,10px)!important;
+}
+
+.from-right_in_middle-grow-enter{
+   transform: translate(100%,-50%)!important;
+}
+.from-right_in_middle-grow-leave-to{
+   transform: translate(-100%,-50%)!important;
+}
+
+.from-right_in_bottom-grow-enter{
+   transform: translate(100%,-10px)!important;
+}
+.from-right_in_bottom-grow-leave-to{
+   transform: translate(-100%,-10px)!important;
+}
+
+
+/*这里是针对toast的动画--end*/
+
+
+

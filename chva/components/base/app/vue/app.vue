@@ -6,6 +6,7 @@
      <aside id="loadingPortal"></aside>
      <aside id="alertPortal"></aside>
      <aside id="modalPortal"></aside>
+     <aside id="toastPortal"></aside>
   </article>
 </template>
 

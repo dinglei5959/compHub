@@ -34,6 +34,9 @@ class PopUp {
    * 组件初始化
    */
   init () {
+    this.template.methods.cb = () => {  // 为了让实例中，拥有改变这边状态的能力
+      this.status = false
+    }
     this.templateFunc = Vue.extend(this.template)
   }
   /**
@@ -41,6 +44,9 @@ class PopUp {
    * @param {Object} options  -- 传入的参数
    */
   present (options) {
+    if (this.status) {
+      return false
+    }
     this.prepresent && this.prepresent(options)
     if (options && options.el) {
       this.el = options.el
@@ -67,14 +73,6 @@ class PopUp {
       }
     })
 
-    // this.propsData.forEach((e, i) => {
-    //   if (options && (e.name in options)) {
-    //     propsData[e.name] = options[e.name]
-    //   } else {
-    //     propsData[e.name] = e.default
-    //   }
-    // })
-
     let container = document.createElement('section')
     this.el.appendChild(container)
     let params = { // 传递的参数
@@ -82,7 +80,7 @@ class PopUp {
       propsData: propsData,
       components: {}
     }
-    if ('template__name' in this.template.data()) {  // 模板的属性暂时约定为template__name
+    if (this.template.data && 'template__name' in this.template.data()) {  // 模板的属性暂时约定为template__name
       // if (options.template.propsData) {
       //   options.template.propsData.data = {type: Object}
       // } else {
