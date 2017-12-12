@@ -12,7 +12,7 @@ export default {
   name: 'Modal',
   data () {
     return {
-      template__name: NAME,
+      template__name: NAME,  // 属性名  为了给popup来读取的模板名
       show: false
     }
   },

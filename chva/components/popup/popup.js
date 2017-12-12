@@ -83,13 +83,15 @@ class PopUp {
       components: {}
     }
     if ('template__name' in this.template.data()) {  // 模板的属性暂时约定为template__name
-      if (options.template.props) {
-        options.template.props.data = {type: Object}
-      } else {
-        options.template.props = {
-          data: { type: Object }
-        }
-      }
+      // if (options.template.propsData) {
+      //   options.template.propsData.data = {type: Object}
+      // } else {
+      //   options.template.propsData = {
+      //     data: { type: Object }
+      //   }
+      // }
+
+     // options.template.data = {name: 'dddkjdkj'}
 
       params.components[this.template.data().template__name] = options.template  // components
     }

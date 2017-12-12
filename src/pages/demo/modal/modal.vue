@@ -38,7 +38,8 @@ export default{
       Modal.present({
         template: template2,
         data: {
-          name: 'dinglei'
+          name: 'dinglei5959',
+          sex: '男'
         }
       })
     }

@@ -14,6 +14,7 @@
         <section>
           {{$attrs}}
           {{this.$options.propsData.data}}
+          {{this.data}}
         </section>
       </article>
     </Content>
@@ -25,6 +26,9 @@ export default{
   name: 'ModalDemo',
   props: {
     data: {type: Object, default: {}}
+  },
+  created () {
+    console.log(this)
   }
 }
 </script>
